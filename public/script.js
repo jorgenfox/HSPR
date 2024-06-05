@@ -104,6 +104,37 @@ async function fetchAndDisplayResults() {
 // Fetch and display results on page load
 fetchAndDisplayResults();
 
+async function fetchAndDisplayLeaderboard() {
+    try {
+        const response = await fetch('/api/hspr/leaderboard');
+        const leaderboard = await response.json();
+
+        const leaderboardTableBody = document.querySelector('#leaderboardTable tbody');
+        leaderboardTableBody.innerHTML = '';
+
+        let position = 1;
+
+        leaderboard.forEach(athlete => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${position}</td>
+                <td>${athlete.sportlane_eesnimi}</td>
+                <td>${athlete.sportlane_perenimi}</td>
+                <td>${athlete.sportlane_sugu}</td>
+                <td>${athlete.tulemus_vanusegrupp}</td>
+                <td>${athlete.tulemus_hooaeg}</td>
+                <td>${athlete.punktid_sum}</td>
+            `;
+            leaderboardTableBody.appendChild(row);
+            position++;
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+fetchAndDisplayLeaderboard();
+
 const firstNameInput = document.getElementById('firstName');
 const firstNameSuggestions = document.getElementById('firstNameSuggestions');
 

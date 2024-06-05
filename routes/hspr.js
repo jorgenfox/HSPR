@@ -10,6 +10,9 @@ router.get('/athletes/lastNames', athleteController.getLastNames);
 
 router.post('/calculate', calculatorController.calculatePointsAndSaveResult);
 router.get('/results', calculatorController.getResults);
-router.get('/leaderboard', calculatorController.getLeaderboard)
+router.put('/results/:id', calculatorController.updateResult);
+router.delete('/results/:id', calculatorController.deleteResult);
+
+router.get('/leaderboard', calculatorController.getLeaderboard);
 
 module.exports = router;

@@ -1,8 +1,7 @@
 class Calculator {
-  constructor(event, bestResult, ageGroup) {
+  constructor(event, bestResult) {
       this.event = event;
       this.bestResult = bestResult;
-      this.ageGroup = ageGroup;
       this.pointShift = 20000;
 
       this.formulas = {
