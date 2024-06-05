@@ -1,16 +1,13 @@
+const Athlete = require('../models/athlete');
 const pool = require('../db/database');
 
-// Function to check if an athlete exists
 exports.checkAthlete = async (req, res) => {
     const { firstName, lastName, gender } = req.query;
 
     try {
-        const query = 'SELECT id FROM athletes WHERE first_name = $1 AND last_name = $2 AND gender = $3';
-        const values = [firstName, lastName, gender];
-        const result = await pool.query(query, values);
-
-        if (result.rows.length > 0) {
-            res.json({ exists: true, athleteId: result.rows[0].id });
+        const athlete = await Athlete.findByName(pool, firstName, lastName, gender);
+        if (athlete) {
+            res.json({ exists: true, athleteId: athlete.id });
         } else {
             res.json({ exists: false });
         }
@@ -20,7 +17,6 @@ exports.checkAthlete = async (req, res) => {
     }
 };
 
-// Function to create a new athlete
 exports.createAthlete = async (req, res) => {
     const { firstName, lastName, gender } = req.body;
 
@@ -29,11 +25,8 @@ exports.createAthlete = async (req, res) => {
     }
 
     try {
-        const query = 'INSERT INTO athletes (first_name, last_name, gender) VALUES ($1, $2, $3) RETURNING id';
-        const values = [firstName, lastName, gender];
-        const result = await pool.query(query, values);
-
-        res.json({ athleteId: result.rows[0].id });
+        const athlete = await Athlete.create(pool, firstName, lastName, gender);
+        res.json({ athleteId: athlete.id });
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
@@ -41,31 +34,25 @@ exports.createAthlete = async (req, res) => {
 };
 
 exports.getFirstNames = async (req, res) => {
-  const { prefix } = req.query;
+    const { prefix } = req.query;
 
-  try {
-      const query = 'SELECT first_name, last_name, gender FROM athletes WHERE first_name ILIKE $1 LIMIT 10';
-      const values = [`${prefix}%`];
-      const result = await pool.query(query, values);
-
-      res.json(result.rows);
-  } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('Internal Server Error');
-  }
+    try {
+        const firstNames = await Athlete.getFirstNames(pool, prefix);
+        res.json(firstNames);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 };
 
 exports.getLastNames = async (req, res) => {
-  const { prefix } = req.query;
+    const { prefix } = req.query;
 
-  try {
-      const query = 'SELECT first_name, last_name, gender FROM athletes WHERE last_name ILIKE $1 LIMIT 10';
-      const values = [`${prefix}%`];
-      const result = await pool.query(query, values);
-
-      res.json(result.rows);
-  } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('Internal Server Error');
-  }
+    try {
+        const lastNames = await Athlete.getLastNames(pool, prefix);
+        res.json(lastNames);
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
+    }
 };
