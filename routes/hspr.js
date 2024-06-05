@@ -10,5 +10,6 @@ router.get('/athletes/lastNames', athleteController.getLastNames);
 
 router.post('/calculate', calculatorController.calculatePointsAndSaveResult);
 router.get('/results', calculatorController.getResults);
+router.get('/leaderboard', calculatorController.getLeaderboard)
 
 module.exports = router;
