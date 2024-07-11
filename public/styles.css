@@ -1,104 +1,460 @@
-body {
-    font-family: Arial, sans-serif;
+/* Ensure consistent box-sizing */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
+}
+
+html {
+    height: 100%;
+}
+
+h1, h2 {
+    color: white;
+}
+
+h4 {
+    color: white;
+}
+
+/* HEADER */
+header {
+    background-color: #333;
     padding: 20px;
-  }
-  
-  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+#headerImg {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #DCD979;
+    border-radius: 100%;
+}
+
+.headerNav {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    align-items: center;
+}
+
+.headerNav a {
+    color: white;
+    text-decoration: none;
+    margin: 0px 15px;
+    align-items: center;
+}
+
+.headerNav a:hover {
+    text-decoration: underline;
+}
+
+.headerTitle {
+    display: flex;
+    flex: 1;
     text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
+    justify-content: center;
+    font-size: 10px;
+}
+
+.headerTitle h1 {
+    margin: 0;
+}
+
+.headerLogin {
+    display: flex;
+    flex: 1;
+    justify-content: right;
+}
+
+body.addResultBG {background-image: url("/pics/bg10.png");}
+body.allResultBG {background-image: url("/pics/bg03.png");}
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    background: url("pics/bg01.png");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bodyWindow {
+    padding: 15px;
+    margin: 5%;
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 30px;
+}
+
+/* ALLRESULTS - LEADERBOARD */
+.bodyGroup {
+    margin: 15px 0px 15px 0px;
+    flex-direction: column;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 15px 0px 15px 0px;
+    width: 100%;
+}
+
+.filterContainer-item {
+    display: inline-block;
+    align-content: center;
+}
+
+.resultsTableContainer {
+    width: 100%;
+    color: white;
+}
+
+.resultsTableContainer th, .resultsTableContainer td {
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align:left;
+}
+
+.resultsTableContainer .narrow-column {
+    width: 10%;
+}
+
+.resultsTableContainer .medium-column {
+    width: 5%; 
+}
+
+.resultsTableContainer .wide-column {
+    width: auto; 
+}
+
+.resultsTableContainer .button-column {
+    width: 1%; 
+    white-space: nowrap; 
+}
+
+.editFormButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top:15px;
+}
+
+.leaderboard-table {
     display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  select {
-    width: 100%;
+    color: white;
+    table-layout: fixed;
+}
+
+.leaderboard-table th, .leaderboard-table td {
     padding: 10px;
-    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align:left;
+}
+
+.leaderboard-table .small-column {
+    width: 1%; 
+    white-space: nowrap; 
+}
+
+
+/* ADDRESULTS */
+.addResG1 {
+    display: flex;
+    justify-content: left;
+    margin: 15px 0px 15px 0px;
+    gap: 10px;
+}
+
+.addResG1-item {
+    padding-right: 15px;
+    width:150px;
+}
+
+.labelContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top:20px;
+    margin-bottom:-20px;
+}
+
+.label {
+    text-align: left;
+    flex:1;
+    margin-left:5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+}
+
+.saveResultButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.saveResultButtons button[type="button"] {
+    align-self: flex-start;
+}
+
+.saveResultButtons button[type="submit"] {
+    align-self: flex-end;
+    margin-top: 15px;
+}
+
+.empty-label {
+    flex:1; /* Same width as the button */
+}
+
+.addResG2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0px 15px 0px;
+}
+
+.addResG2-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.addResG2-item {
+    flex: 1; /* Each item takes an equal width */
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-wrap:nowrap;
+}
+
+/* .resultTitles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} */
+
+/* Form styling */
+form {
+    padding: 0px;
+    color: white;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    font-family: Arial, sans-serif;
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button[type="submit"] {
-    background-color: #4caf50;
-    color: white;
+    border-radius: 4px;
+    color: black; 
+    background-color: white;
+    text-align:left;
+}
+
+button, button[type="button"] {
     padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
-  .alert {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: none;
-  }
-  
-  .table-container {
-    margin-top: 20px;
-  }
-  
-  table {
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+}
+
+/* Additional row styling */
+.athlete-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    border-collapse: collapse;
-  }
-  
-  table th, table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  table th {
-    background-color: #f2f2f2;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  table tr:hover {
-    background-color: #ddd;
-  }
-  
-  .suggestions {
-  position: absolute;
-  border: 1px solid #ccc;
-  background-color: white;
-  max-height: 150px;
-  overflow-y: auto;
-  z-index: 1000;
+}
+
+/* Placeholder for "Eemalda" button to ensure alignment */
+.placeholder-button {
+    flex: 1; /* Placeholder takes up the same space as a button */
+    visibility: hidden; /* Hide the placeholder */
+}
+
+.suggestions {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc; /* Border to match input fields */
+    border-radius: 4px; /* Slightly rounded corners */
+    max-height: 200px; /* Max height for scroll */
+    overflow-y: auto; /* Enable scroll for overflow */
+    background-color: white; /* Background color for dropdown */
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Positioning for dropdown */
+    z-index: 1000; /* Ensure dropdown is above other content */
+    color: black;
+    width: 100%; /* Match the width of the input field */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .suggestion-item {
-  padding: 8px;
-  cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
 }
 
-.suggestion-item:hover {
-  background-color: #f0f0f0;
+.suggestion-item:hover, .suggestion-item:focus {
+    background-color: #f0f0f0;
+}
+
+.error-item {
+    color: black;
+    background-color: #ffcccc;
+    padding: 10px;
+    cursor: default;
+}
+
+.eesnimi-input, .perenimi-input {
+    position: relative;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.popup-content {
+    background-color: #555;
+    margin: 15% auto;
+    padding: 20px;
+    border: 0px solid #888;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+/* Login / Signup */
+.logGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logGroup-item {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    width:20vw;
+}
+
+#error-message {
+    display: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 15px;
+    width: 20vw; /* Ensure it matches the form item max-width */
+    word-wrap: break-word; 
+    white-space: pre-wrap; 
+}
+
+/* Semi-Experimental Leaderboard Stuff */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.modal-content {
+    background-color: #555;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.modal-table th,
+.modal-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    
+}
+
+.modal-table th {
+    background-color: #444;
+    color: white;
+    text-align: center;
+}
+
+.modal-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-table td {
+    text-align: center;
 }
